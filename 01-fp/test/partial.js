@@ -1,25 +1,28 @@
 import { _, partial } from "../src/partial";
-
+ 
 describe("01-fp", () => {
   describe("Partial Function Application", () => {
-    it.skip("should invoke partial version of nullary(): nullary()", () => {
+    it("should invoke partial version of nullary(): nullary()", () => {
       const nullary = partial(() => 777);
       nullary().should.eql(777);
     });
 
-    it.skip("should invoke partial version of unary(a): unary(_)", () => {
+    it("should invoke partial version of unary(a): unary(_)", () => {
+      console.log("1z")
       const unary = partial(a => a);
+      console.log("2z")
       const partialUnary = unary(_);
+      console.log("3z")
       partialUnary(21).should.eql(21);
     });
 
-    it.skip("should invoke partial version of binary(a, b): binary(_, _)", () => {
+    it("should invoke partial version of binary(a, b): binary(_, _)", () => {
       const binary = partial((a, b) => a + b);
       const partialBinary = binary(_, _);
       partialBinary(2, 2).should.eql(4);
     });
 
-    it.skip("should invoke partial version of pow(x, y): pow(_, 4)", () => {
+    it.only("should invoke partial version of pow(x, y): pow(_, 4)", () => {
       const pow = partial(Math.pow);
       const partialPow = pow(_, 4);
       partialPow(2).should.eql(16);

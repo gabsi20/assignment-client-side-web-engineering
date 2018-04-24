@@ -9,4 +9,16 @@
  */
 export const _ = undefined;
 
-export function partial() {}
+export function partial(fn, ...args) {
+  const realArgs = args.filter( x => x !== undefined)
+  console.log(fn.length, realArgs.length)
+  if(fn.length >= realArgs.length) {
+    realArgs.map(x => {
+      console.log("ANA", x)
+        fn.bind(null,x);
+    })
+    return (...more) => partial(fn, ...more)
+  } else {
+    return fn
+  }
+} 
