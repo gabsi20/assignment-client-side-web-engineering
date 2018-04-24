@@ -7,5 +7,10 @@
  * - `curry` is a pure function!
  * - Has auto currying after initial call
  */
-export function curry() {
+export function curry(fn, length = fn.length, ...args) {
+  return (length === args.length)
+      ? (args.length === 0) ? fn : fn(...args)
+      : (...more) => curry(fn, length, ...args, ...more);
 }
+
+
