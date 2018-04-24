@@ -2,7 +2,7 @@ import { d } from "../src/monad";
 
 describe("01-fp", () => {
   describe("Monads", () => {
-    it.skip("should construct, wrap and lift", () => {
+    it("should construct, wrap and lift", () => {
       const $ = d()
         .extend("style", function(style) {
           Object.assign(this, { style });
