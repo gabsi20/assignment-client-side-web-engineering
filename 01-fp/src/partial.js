@@ -9,16 +9,16 @@
  */
 export const _ = undefined;
 
-export function partial(fn, ...args) {
-  const realArgs = args.filter( x => x !== undefined)
-  console.log(fn.length, realArgs.length)
-  if(fn.length >= realArgs.length) {
-    realArgs.map(x => {
-      console.log("ANA", x)
-        fn.bind(null,x);
+export function partial(fn, length = fn.length, ...args) {
+
+  const finalArgs = new Array(length).fill(_)
+  const recursive = (...args) => {
+    args.forEach((value) => {
+      if(value !== _) {
+        finalArgs[finalArgs.indexOf(_)] = value
+      };
     })
-    return (...more) => partial(fn, ...more)
-  } else {
-    return fn
+    return finalArgs.includes(_) ? recursive : fn(...finalArgs) 
   }
+  return finalArgs.includes(_) ? recursive : fn
 } 

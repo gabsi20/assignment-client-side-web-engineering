@@ -8,11 +8,8 @@ describe("01-fp", () => {
     });
 
     it("should invoke partial version of unary(a): unary(_)", () => {
-      console.log("1z")
       const unary = partial(a => a);
-      console.log("2z")
       const partialUnary = unary(_);
-      console.log("3z")
       partialUnary(21).should.eql(21);
     });
 
@@ -22,25 +19,25 @@ describe("01-fp", () => {
       partialBinary(2, 2).should.eql(4);
     });
 
-    it.only("should invoke partial version of pow(x, y): pow(_, 4)", () => {
+    it("should invoke partial version of pow(x, y): pow(_, 4)", () => {
       const pow = partial(Math.pow);
       const partialPow = pow(_, 4);
       partialPow(2).should.eql(16);
     });
 
-    it.skip("should invoke partial version of pow(x, y): pow(_, 4)(2)", () => {
+    it("should invoke partial version of pow(x, y): pow(_, 4)(2)", () => {
       const pow = partial(Math.pow);
       pow(_, 4)(2).should.eql(16);
     });
 
-    it.skip("should invoke partial version of pow(x, y) two times w/o side-effects: pow(_, 4)", () => {
+    it("should invoke partial version of pow(x, y) two times w/o side-effects: pow(_, 4)", () => {
       const pow = partial(Math.pow);
       const partialPow = pow(_, 4);
       partialPow(2).should.eql(16);
       partialPow(2).should.eql(16);
     });
 
-    it.skip("should invoke partial version of add(x, y, z): add(_, 2, 3)", () => {
+    it("should invoke partial version of add(x, y, z): add(_, 2, 3)", () => {
       function add(x, y, z) {
         return x + y + z;
       }
@@ -49,7 +46,7 @@ describe("01-fp", () => {
       partiallyAppliedAdd(1).should.eql(6);
     });
 
-    it.skip("should invoke partial version of add(x, y, z): add(1, _, 3)", () => {
+    it("should invoke partial version of add(x, y, z): add(1, _, 3)", () => {
       function add(x, y, z) {
         return x + y + z;
       }
@@ -58,7 +55,7 @@ describe("01-fp", () => {
       partiallyAppliedAdd(2).should.eql(6);
     });
 
-    it.skip("should invoke partial version of add(x, y, z): add(1, 2, _)", () => {
+    it("should invoke partial version of add(x, y, z): add(1, 2, _)", () => {
       function add(x, y, z) {
         return x + y + z;
       }
@@ -67,7 +64,7 @@ describe("01-fp", () => {
       partiallyAppliedAdd(3).should.eql(6);
     });
 
-    it.skip("should invoke partial version of add(x, y, z) in one step: add(_, 2, _)", () => {
+    it("should invoke partial version of add(x, y, z) in one step: add(_, 2, _)", () => {
       function add(x, y, z) {
         return x + y + z;
       }
@@ -76,7 +73,7 @@ describe("01-fp", () => {
       partiallyAppliedAdd1(1, 3).should.eql(6);
     });
 
-    it.skip("should invoke partial version of add(x, y, z) in two steps: add(_, 2, _)", () => {
+    it("should invoke partial version of add(x, y, z) in two steps: add(_, 2, _)", () => {
       function add(x, y, z) {
         return x + y + z;
       }
@@ -86,7 +83,7 @@ describe("01-fp", () => {
       partiallyAppliedAdd2(3).should.eql(6);
     });
 
-    it.skip("should invoke partial version of mul(...factors): mul(2, _, _, 2, _, _)", () => {
+    it("should invoke partial version of mul(...factors): mul(2, _, _, 2, _, _)", () => {
       function mul(...args) {
         const [first, ...rest] = args;
         if (rest.length === 0) {
