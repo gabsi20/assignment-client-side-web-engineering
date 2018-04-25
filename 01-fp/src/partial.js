@@ -10,14 +10,9 @@
 export const _ = undefined;
 
 export function partial(fn, length = fn.length, ...args) {
-
   const finalArgs = new Array(length).fill(_)
   const recursive = (...args) => {
-    args.forEach((value) => {
-      if(value !== _) {
-        finalArgs[finalArgs.indexOf(_)] = value
-      };
-    })
+    args.forEach( arg => finalArgs[finalArgs.indexOf(_)] = arg )
     return finalArgs.includes(_) ? recursive : fn(...finalArgs) 
   }
   return finalArgs.includes(_) ? recursive : fn
