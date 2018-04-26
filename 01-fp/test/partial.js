@@ -21,8 +21,8 @@ describe("01-fp", () => {
 
     it("should invoke partial version of pow(x, y): pow(_, 4)", () => {
       const pow = partial(Math.pow);
-      const partialPow = pow(_, 4);
-      partialPow(2).should.eql(16);
+      const partialPow = pow(_, 5);
+      partialPow(2).should.eql(32);
     });
 
     it("should invoke partial version of pow(x, y): pow(_, 4)(2)", () => {
