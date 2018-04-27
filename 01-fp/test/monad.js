@@ -14,8 +14,9 @@ describe("01-fp", () => {
         });
 
       const result = $({})
-        .style({ color: "red" })
-        .fadeOut();
+      console.log(result)
+      result.style({ color: "red" })
+      result.fadeOut();
 
       result.should.have.property("style").which.is.a.Object();
       result.style.should.have.property("color").which.is.a.String();

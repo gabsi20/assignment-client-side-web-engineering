@@ -21,19 +21,6 @@
  */
 
 export function d() {
-  const monad = function(a) {
-    monad.element = Object.assign({}, a)
-    return monad
-  }
-
-  monad.extend = function(method, fn) {
-    this[method] = (...args) => {
-      fn.apply(this.element, args) 
-      return this
-    }
-    return this
-  }
-
-  return monad
+ 
 }
 
