@@ -15,8 +15,7 @@ export function partial(fn, length = fn.length, ...args) {
     let idx = 0
     args.forEach( arg => {
       idx = finalArgs.indexOf(_,idx)
-      finalArgs[idx] = arg
-      idx++
+      finalArgs[idx++] = arg
     })
     return finalArgs.includes(_) ? recursive : fn(...finalArgs) 
   }
