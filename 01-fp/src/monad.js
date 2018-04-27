@@ -20,16 +20,4 @@
  *   .fadeOut();
  */
 export function d() {
-  const monad = function(a) {
-    return Object.assign(monad, a)
-  }
-
-  monad.extend = function(method, fn) {
-    this[method] = (...args) => {
-      return fn.apply(this, args) 
-    }
-    return this
-  }
-  
-  return monad
 }
