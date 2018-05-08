@@ -1,4 +1,4 @@
-import { JSDOM } from "jsdom";
+import { JSDOM } from "jsdom"; 
 import { build } from "../src/template";
 
 // provide DOM for tests
