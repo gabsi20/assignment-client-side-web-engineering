@@ -29,26 +29,55 @@
  * - page()
 */
 let window, document, history;
+const routes = [];
+const getUrlParams = new RegExp(':[\\w]*', 'g');
 
 const startup = function(options){
   window = options.window
   document = window.document
   history = window.history
+  window.addEventListener('popstate', linkHandler);
+  window.addEventListener('click', linkHandler);
 }
 
-const router = function (input){
-  if(typeof input === Object){
-    startup(input)
+const router = function (path, callback){
+  if(typeof path === "object"){
+    startup(path)
   }else{
-    setRoute(input)
+    setRoute(path, callback)
   }
 }
 
-
-const createRouter = function() {
-  return router
+const setRoute = function(pathname, callback){
+  if(!routes.some(route => route.pathname === pathname)){
+    const regexString = pathname.replace(getUrlParams, "([\\w]*)");
+    routes.push({
+      pathname,
+      regex: new RegExp('^'+regexString+'$'),
+      urlParams: pathname.match(getUrlParams),
+      callback
+    });
+  }
 }
 
+const linkHandler = function({ target: { location:{ pathname }}}){
+    const route = routes.filter(route => route.regex.test(pathname)).shift();
+    if(route){
+      const [,...params] = pathname.match(route.regex)
+      window.history.pushState({}, pathname, pathname);
+      route.callback(params);
+      router.current = route.pathname;
+    }else{
+      router.error = Error("route undefined");
+    }
+}
+
+
+
+const createRouter = function() {
+  router.current = '/'
+  return router
+}
 
 
 export {createRouter};

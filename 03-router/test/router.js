@@ -102,7 +102,7 @@ describe("03-router", () => {
       router.current.should.eql("/users/:userid");
     });
 
-    it("should create and start router with dynamic route: /users/:id/tasks/:taskid", () => {
+    it.only("should create and start router with dynamic route: /users/:id/tasks/:taskid", () => {
       const { dom, window } = createWindow({
         url: `${BASE_URL}/`
       });
@@ -115,7 +115,7 @@ describe("03-router", () => {
       router.current.should.eql("/users/:userid/tasks/:taskid");
     });
 
-    it("should invoke function for: /users/:userid/tasks/:taskid", done => {
+    it.only("should invoke function for: /users/:userid/tasks/:taskid", done => {
       const { dom, window } = createWindow({
         url: `${BASE_URL}/`
       });
