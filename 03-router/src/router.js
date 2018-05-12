@@ -27,4 +27,28 @@
  *
  * Start:
  * - page()
- */
+*/
+let window, document, history;
+
+const startup = function(options){
+  window = options.window
+  document = window.document
+  history = window.history
+}
+
+const router = function (input){
+  if(typeof input === Object){
+    startup(input)
+  }else{
+    setRoute(input)
+  }
+}
+
+
+const createRouter = function() {
+  return router
+}
+
+
+
+export {createRouter};
