@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Router for web applications",
   "scripts": {
-    "test": "mocha --require babel-register"
+    "test": "mocha --require babel-register",
+    "shortTest": "npm run test --silent | grep -E \"passing|failing\""
   },
   "author": "Hannes Moser <hannes.moser@fh-salzburg.ac.at>",
   "license": "MIT",
