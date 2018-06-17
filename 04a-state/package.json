@@ -1,0 +1,34 @@
+{
+  "name": "04a-state",
+  "version": "1.0.0",
+  "description": "The fourth assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js -p 8080 --open --live -- -t babelify -t sheetify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Tom",
+    "die",
+    "Lokomotive"
+  ],
+  "author": "Hannes Moser",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "choo": "^3.3.0",
+    "node-emoji": "^1.8.1",
+    "sheetify": "^7.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^7.3.0",
+    "budo": "^11.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "04-state",
+  "version": "1.0.0",
+  "description": "State container for web applications",
+  "scripts": {
+    "test": "mocha --require babel-register"
+  },
+  "author": "Hannes Moser <hannes.moser@fh-salzburg.ac.at>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "mocha": "^5.1.0",
+    "should": "^13.2.1"
+  },
+  "dependencies": {}
+}
