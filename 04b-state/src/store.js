@@ -15,4 +15,42 @@ import { isPlainObject } from "./utils/is-plain-object";
  * 13. Recovers from errors
  * 14. Throws if action type is missin or undefined and not if falsy
  */
-export function createStore(reducer, state) {}
+export function createStore(reducer, state) {
+  let currentState = state;
+  const listeners = [];
+  if (typeof reducer !== "function") {
+    throw "NoFunctionError";
+  }
+  return {
+    dispatch(action) {
+      if (actionNotValid(action)) {
+        throw "ActionNotValidError";
+      }
+      currentState = reducer(currentState, action);
+      listeners.slice().forEach(l => l());
+    },
+    subscribe(listener) {
+      if (typeof listener !== "function") {
+        throw "NotAFunctionError";
+      }
+      listeners.push(listener);
+      let subscribed = true;
+      return function() {
+        if (!subscribed) return;
+        subscribed = false;
+        listeners.splice(listeners.indexOf(listener), 1);
+      };
+    },
+    getState() {
+      return currentState;
+    }
+  };
+}
+
+function actionNotValid(action) { // found in redux code
+  return (
+    !isPlainObject(action) ||
+    typeof action.type === "undefined" ||
+    action["type"] === undefined
+  );
+}
